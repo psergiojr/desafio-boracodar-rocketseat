@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--accent-light);
+    height: 100vh;
+    display: grid;
+    place-items: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#calculadora {
+    --inner-shadow: var(--shadow-color);
+    --outer-shadow: var(--accent-shadow);
+
+    background-color: var(--base-color);
+    color: var(--text-color);
+    max-width: 500px;
+    padding: 3rem 2rem;
+    border-radius: 3rem;
+
+    box-shadow:
+        inset 0 0.5rem .5rem var(--light-color),
+        inset 0 -0.5rem .5rem var(--inner-shadow),
+        0 2rem 3rem var(--outer-shadow)
+    ;
+}
+#calculadora > * {
+    --outer-shadow: var(--inner-shadow);
+}
+
+.visor {
+    padding: 1rem;
+    text-align: right;
+}
+.entrada {
+    font-size: 1.4rem;
+    opacity: .5;
+}
+.resultado {
+    font-size: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.resultado::before {
+    content: '=';
+    opacity: .5;
+    font-size: 1.4rem;
+}
+
+.teclado {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: .5rem;
+}
+
+.numeros {
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: inherit;
+}
+.numeros button:first-of-type {
+    color: var(--accent-color);
+}
+
+.operadores {
+    display: grid;
+    place-items: center;
+    gap: inherit;
+
+    --light-color: var(--accent-light);
+    --base-color: var(--accent-color);
+    --inner-shadow: var(--accent-shadow);
+    --text-color: var(--accent-text);
+}
+.operadores button:last-of-type {
+    --light-color: var(--hightlight-light);
+    --base-color: var(--hightlight-color);
+    --inner-shadow: var(--hightlight-shadow);
+    --text-color: var(--hightlight-text);
+}
+
+button {
+    --button-size: 4rem;
+    height: var(--button-size);
+    width: var(--button-size);
+    border-radius: 50%;
+    font-size: calc(var(--button-size)/2);
+
+    color: var(--text-color);
+    text-shadow: var(--inner-shadow) 0px .1rem .1rem;
+    border: none;
+    background-color: var(--base-color);
+    background-image: linear-gradient(var(--base-color), var(--light-color));
+
+    box-shadow:
+        0 .2rem .2rem var(--outer-shadow),
+        inset 0 .1rem .2rem var(--light-color)
+    ;
+}
+button:active {
+    box-shadow:
+        inset 0 .2rem .2rem var(--inner-shadow),
+        inset 0 -.2rem .2rem var(--light-color)
+    ;
+}
+
+
+/* CORES */
+
+.dark {
+    --light-color: #444;
+    --base-color: #333;
+    --shadow-color: #222;
+    --text-color: white;
+}
+
+.light {
+    --light-color: #fff;
+    --base-color: #ddd;
+    --shadow-color: #bbb;
+    --text-color: #222;
+}
+
+.bamboo {
+    --accent-light: #ccff67;
+    --accent-color: yellowgreen;
+    --accent-shadow: #6c9123;
+    --accent-text: black;
+
+    --hightlight-light: #fb790e;
+    --hightlight-color: #ff4800;
+    --hightlight-shadow: #a2380e;
+    --hightlight-text: black;
+}
+
+.violet {
+    --accent-light: #cc66cc;
+    --accent-color: #ab2be2;
+    --accent-shadow: #7f1860;
+    --accent-text: black;
+    
+    --hightlight-light: #6c31ff;
+    --hightlight-color: #4800ff;
+    --hightlight-shadow: #240080;
+    --hightlight-text: white;
+}
+
+.blue {
+    --accent-light: #7091f4;
+    --accent-color: royalblue;
+    --accent-shadow: #3f5493;
+    --accent-text: black;
+    
+    --hightlight-light: #77ff58;
+    --hightlight-color: #71ad3c;
+    --hightlight-shadow: #3e7b2f;
+    --hightlight-text: black;
+}
