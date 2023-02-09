@@ -4,13 +4,22 @@
     box-sizing: border-box;
 }
 
+:root {
+    --paper-color: #d8d8d8;
+    --text-color: #333;
+}
+
 body {
     background-color: #3c91ff;
     background-image: linear-gradient(#3c91ff, #006eff);
-    --outer-shadow: #397695;
+    --outer-shadow: #1c4983;
 
     font-family: 'Rubik', sans-serif;
-    color: #333;
+    color: var(--text-color);
+    text-shadow:
+        0 3px 3px white,
+        0 -3px 3px silver
+    ;
 
     min-height: 100vh;
     display: grid;
@@ -27,26 +36,20 @@ b {
 }
 
 section {
-    background-color: white;
-    padding: 2rem;
     display: grid;
-    /* grid-template-columns: auto auto; */
-    /* row-gap: 1.4em; */
-    border-radius: 2rem;
-}
-section:not(:last-child) {
-    border-bottom: 3px dashed var(--outer-shadow);
 }
 .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: var(--paper-color);
+    padding: 0 2rem;
 }
 .row > div { display: grid; }
 .row > div:last-child { text-align: right; }
 
 .airports {
-    margin-top: 2em;
+    padding-top: 2em;
 }
 .airport-codes b { font-size: 3em; }
 .airport-codes .material-symbols-outlined {
@@ -67,19 +70,26 @@ section:not(:last-child) {
     background-color: #004bc3;
     color: white;
     padding: .3em .5em;
+    margin-top: .3em;
     border-radius: .5em;
     place-self: start;
+    text-shadow: none;
+    box-shadow:
+        0 3px 3px white,
+        0 -3px 3px silver
+    ;
 }
 .qrcode {
     justify-items: center;
 }
 .qrcode img {
     max-width: 100%;
+    mix-blend-mode: multiply;
 }
 .embarque .aviso {
     display: block;
     text-align: center;
-    margin-top: 1.4em;
+    padding-top: 1.4em;
     font-size: 1.2rem;
 }
 .embarque .dados-embarque {
@@ -90,4 +100,37 @@ section:not(:last-child) {
 }
 .dados-embarque > div {
     display: grid;
+}
+
+section::before, section::after {
+    display: block;
+    content: '';
+    height: 32px;
+    /* width: 400px; */
+    background-color: var(--paper-color);
+}
+section:not(:last-child)::after,
+section:not(:first-child)::before {
+    --mask-file: url(./assets/mask2.svg);
+
+    -webkit-mask-image: var(--mask-file);
+    mask-image: var(--mask-file);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+}
+section::before {
+    -webkit-mask-position: top;
+    mask-position: top;
+    box-shadow: inset 0 3px 5px white;
+}
+section::after {
+    -webkit-mask-position: bottom;
+    mask-position: bottom;
+    box-shadow: inset 0 -3px 5px silver;
+}
+section:first-child::before {
+    border-radius: 2rem 2rem 0 0;
+}
+section:last-child::after {
+    border-radius: 0 0 2rem 2rem;
 }
