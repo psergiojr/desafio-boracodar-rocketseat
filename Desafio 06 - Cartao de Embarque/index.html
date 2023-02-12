@@ -14,56 +14,97 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-    <div class="cartao">
-        <section>
-            <div class="row">
-                <div>Voo <b>RS995</b></div>
-                <div>Data <b>23/05/2023</b></div>
-            </div>
+    <header>
+        <div class="titulo">
+            <h1>#boraCodar</h1>
+            <h2>Desafio 6</h2>
+            <h3>Cartão de Embarque</h3>
+        </div>
+        <div class="social">
+            Paulo Sérgio (@psergiojr)
+        </div>
+    </header>
 
-            <div class="row airports">
-                <div>São Paulo, Brasil</div>
-                <div>São Francisco, EUA</div>
-            </div>
+    <main class="mask2">
+        <div class="cartao">
+            <section>
+                <div class="row">
+                    <div>Voo <b>RS995</b></div>
+                    <div>Data <b>23/05/2023</b></div>
+                </div>
 
-            <div class="row airport-codes">
-                <b>GRU</b>
-                <span class="material-symbols-outlined">flight</span>
-                <b>SFO</b>
-            </div>
-            
-            <div class="row">
-                <span>17:00</span>
-                <span>04:48<sup>+1</sup></span>
-            </div>
-            
-        </section>
+                <div class="row airports">
+                    <div>São Paulo, Brasil</div>
+                    <div>São Francisco, EUA</div>
+                </div>
 
-        <section>
-            <div class="row">
-                <div>Passageiro <b>Rodrigo Terron</b></div>
-                <div>Assento <b>28A</b></div>
-            </div>
-        </section>
-
-        <section class="embarque">
-            <div class="row">
-                <div class="dados-embarque">
-                    <div>Embarque <b>16:15</b></div>
-                    <div>Terminal <b>2</b></div>
-                    <div>Portão <b>15</b></div>
+                <div class="row airport-codes">
+                    <b>GRU</b>
+                    <span class="material-symbols-outlined">flight</span>
+                    <b>SFO</b>
                 </div>
                 
-                <div class="qrcode">
-                    <img src="./assets/qrcode.png" alt="">
-                    Grupo de embarque: 3
+                <div class="row">
+                    <span>17:00</span>
+                    <span>04:48<sup>+1</sup></span>
                 </div>
-            </div>
-            <div class="row aviso">
-                <span><strong>Atenção:</strong> o portão fecha 16:45</span>
-            </div>
-        </section>
+                
+            </section>
 
-    </div>
+            <section>
+                <div class="row">
+                    <div>Passageiro <b>Rodrigo Terron</b></div>
+                    <div>Assento <b>28A</b></div>
+                </div>
+            </section>
+
+            <section class="embarque">
+                <div class="row">
+                    <div class="dados-embarque">
+                        <div>Embarque <b>16:15</b></div>
+                        <div>Terminal <b>2</b></div>
+                        <div>Portão <b>15</b></div>
+                    </div>
+                    
+                    <div class="qrcode">
+                        <img src="./assets/qrcode.png" alt="">
+                        Grupo de embarque: 3
+                    </div>
+                </div>
+                <div class="row aviso">
+                    <span><strong>Atenção:</strong> o portão fecha 16:45</span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="variants">
+            <div class="mask1" onclick="troca('mask1')">
+                <section></section>
+                <section></section>
+            </div>
+            <div class="mask2" onclick="troca('mask2')">
+                <section></section>
+                <section></section>
+            </div>
+            <div class="mask3" onclick="troca('mask3')">
+                <section></section>
+                <section></section>
+            </div>
+        </div>
+        <div class="colophon">
+            <h2>Coisas legais que usei:</h2>
+            <ul>
+                <li>CSS Masks</li>
+                <li>Filter drop-shadow()</li>
+            </ul>
+        </div>
+    </footer>
 </body>
+<script>
+    function troca(variante) {
+        document.querySelector('main').setAttribute('class', variante)
+    }
+</script>
 </html>

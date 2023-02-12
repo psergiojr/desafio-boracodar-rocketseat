@@ -10,34 +10,61 @@
 }
 
 body {
+    min-height: 100vh;
+    display: grid;
+    grid-template:
+        "header main footer"
+        / 1fr 2fr 1fr;
+
     background-color: #3c91ff;
     background-image: linear-gradient(#3c91ff, #006eff);
     --outer-shadow: #1c4983;
 
-    font-family: 'Rubik', sans-serif;
-    color: var(--text-color);
-    text-shadow:
-        0 3px 3px white,
-        0 -3px 3px silver
-    ;
+    font-family: "Rubik", sans-serif;
+}
+@media screen and (max-width: 800px) {
+    body { grid-template: "header" "main" "footer"; }
+}
+@media screen and (min-width: 800px) {
+    footer {
+        display: flex;
+        text-align: right;
+    }
+}
 
-    min-height: 100vh;
+header,
+footer {
+    padding: 1rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.4rem;
+}
+footer ul li {
+    list-style: none;
+    text-decoration: wavy underline black;
+}
+main {
     display: grid;
     place-content: center;
-}
-b {
-    font-size: 1.2em;
-    font-weight: 500;
 }
 
 .cartao {
     width: 400px;
+    font-family: 'Rubik', sans-serif;
+    color: var(--text-color);
+    text-shadow:
+        0 3px 3px white,
+        0 -3px 3px silver;
     filter: drop-shadow(0 .5rem .5rem var(--outer-shadow));
 }
-
-section {
-    display: grid;
+.cartao b {
+    font-size: 1.2em;
+    font-weight: 500;
 }
+
+section { display: grid; }
 .row {
     display: flex;
     justify-content: space-between;
@@ -48,9 +75,7 @@ section {
 .row > div { display: grid; }
 .row > div:last-child { text-align: right; }
 
-.airports {
-    padding-top: 2em;
-}
+.airports { padding-top: 2em; }
 .airport-codes b { font-size: 3em; }
 .airport-codes .material-symbols-outlined {
     rotate: 90deg;
@@ -67,17 +92,16 @@ section {
     grid-template-columns: 2fr 3fr;
 }
 .dados-embarque > div:first-child b {
-    background-color: #004bc3;
-    color: white;
+    place-self: start;
     padding: .3em .5em;
     margin-top: .3em;
     border-radius: .5em;
-    place-self: start;
+    background-color: #004bc3;
+    color: white;
     text-shadow: none;
     box-shadow:
         0 3px 3px white,
-        0 -3px 3px silver
-    ;
+        0 -3px 3px silver;
 }
 .qrcode {
     justify-items: center;
@@ -88,9 +112,9 @@ section {
 }
 .embarque .aviso {
     display: block;
-    text-align: center;
     padding-top: 1.4em;
     font-size: 1.2rem;
+    text-align: center;
 }
 .embarque .dados-embarque {
     display: flex;
@@ -98,21 +122,20 @@ section {
     place-self: stretch;
     row-gap: 1.4em;
 }
-.dados-embarque > div {
-    display: grid;
-}
+.dados-embarque > div { display: grid; }
+
+.mask1 { --mask-file: url(./assets/mask.svg); }
+.mask2 { --mask-file: url(./assets/mask2.svg); }
+.mask3 { --mask-file: url(./assets/mask3.svg); }
 
 section::before, section::after {
     display: block;
     content: '';
     height: 32px;
-    /* width: 400px; */
     background-color: var(--paper-color);
 }
 section:not(:last-child)::after,
 section:not(:first-child)::before {
-    --mask-file: url(./assets/mask2.svg);
-
     -webkit-mask-image: var(--mask-file);
     mask-image: var(--mask-file);
     -webkit-mask-repeat: no-repeat;
@@ -128,9 +151,28 @@ section::after {
     mask-position: bottom;
     box-shadow: inset 0 -3px 5px silver;
 }
-section:first-child::before {
-    border-radius: 2rem 2rem 0 0;
+section:first-child::before { border-radius: 2rem 2rem 0 0; }
+section:last-child::after { border-radius: 0 0 2rem 2rem; }
+
+.variants > div {
+    width: 200px;
+    filter: drop-shadow(0 .2rem .2rem var(--outer-shadow));
+    margin-bottom: 1rem;
+    margin-left: auto;
+    transition: all ease .3s
 }
-section:last-child::after {
-    border-radius: 0 0 2rem 2rem;
+.variants > div:hover,
+main.mask1 + footer .variants .mask1,
+main.mask2 + footer .variants .mask2,
+main.mask3 + footer .variants .mask3 {
+    transform: translateX(-1rem);
+    filter: drop-shadow(0 .5rem .5rem var(--outer-shadow));
+}
+.variants section::before {
+    -webkit-mask-position: top left;
+    mask-position: top left;
+}
+.variants section::after {
+    -webkit-mask-position: bottom left;
+    mask-position: bottom left;
 }
