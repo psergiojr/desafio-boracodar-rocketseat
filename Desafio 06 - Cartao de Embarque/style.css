@@ -16,9 +16,9 @@ body {
         "header main footer"
         / 1fr 2fr 1fr;
 
-    background-color: #3c91ff;
-    background-image: linear-gradient(#3c91ff, #006eff);
-    --outer-shadow: #1c4983;
+    background-color: #4499ff;
+    background-image: linear-gradient(#63a9ff, #277dff);
+    --outer-shadow: #1453a5;
 
     font-family: "Rubik", sans-serif;
 }
@@ -41,9 +41,10 @@ footer {
     justify-content: space-between;
     font-size: 1.4rem;
 }
+h1, h2, h3 { font-weight: 500; }
 footer ul li {
     list-style: none;
-    text-decoration: wavy underline black;
+    text-decoration: wavy underline white;
 }
 main {
     display: grid;
